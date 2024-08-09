@@ -10,7 +10,7 @@
       "format:fix": "prettier . --write",
       "test": "jest --no-cache --coverage --all --runInBand",
       "test:watch": "jest --watchAll --runInBand",
-      "start": "node /src/server.ts"
+      "start": "node /opt/render/project/src/server.ts"
    },
    "author": "Prajwal Gadge",
    "license": "ISC",
