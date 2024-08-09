@@ -10,7 +10,7 @@
       "format:fix": "prettier . --write",
       "test": "jest --no-cache --coverage --all --runInBand",
       "test:watch": "jest --watchAll --runInBand",
-      "start": "node -e \"console.log(require('fs').readdirSync(process.cwd()))\""
+      "start": "node -e \"console.log(require('fs').readdirSync('src'))\""
    },
    "author": "Prajwal Gadge",
    "license": "ISC",
