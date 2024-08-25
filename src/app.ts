@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
+import { Config } from './config/index';
 import cookieParser from 'cookie-parser';
 import logger from './config/logger';
 import { HttpError } from 'http-errors';
@@ -9,10 +10,10 @@ import userRouter from './routes/user';
 import { globalErrorHandler } from './middlewares/globalErrorHandler';
 
 const app = express();
-
+const ADMINDASHBOARD_URL = Config.ADMINDASHBOARD_URL;
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+    origin: [ADMINDASHBOARD_URL as string],
     credentials: true,
   }),
 );
