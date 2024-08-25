@@ -13,7 +13,7 @@ const app = express();
 const ADMINDASHBOARD_URL = Config.ADMINDASHBOARD_URL;
 app.use(
   cors({
-    origin: ['https://gfms-admin-dashboard-6sg4m2gpg-prajwal9899s-projects.vercel.app'],
+    origin: ['https://gfms-admin-dashboard-6sg4m2gpg-prajwal9899s-projects.vercel.app','https://gfms-admin-dashboard.vercel.app'],
     credentials: true,
   }),
 );
