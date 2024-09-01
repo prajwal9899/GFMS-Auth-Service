@@ -1,5 +1,5 @@
 import { checkSchema } from "express-validator";
-import { UpdateUserRequest } from "../../types";
+import { UpdateUserRequest } from "../types";
 
 export default checkSchema({
     firstName: {

@@ -4,6 +4,8 @@ import { Config } from '../config';
 import { Request } from 'express';
 import { AuthCookie } from '../types';
 
+console.log('hello', Config.JWKS_URI!);
+
 export default expressjwt({
   secret: jwksClient.expressJwtSecret({
     jwksUri: Config.JWKS_URI!,
