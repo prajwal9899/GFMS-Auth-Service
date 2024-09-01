@@ -7,17 +7,19 @@ import refreshTokenModel from '../models/refreshTokenModel';
 
 export class TokenService {
   generateAccessToken(payload: JwtPayload) {
-    let privateKey: Buffer;
-    try {
-      privateKey = fs.readFileSync(
-        path.join(__dirname, '../../certs/private.pem'),
-      );
-    } catch (error) {
-      const err = createHttpError(500, 'Error while reading private key');
-      throw err;
-    }
+    // let privateKey: Buffer;
+    // try {
+    //   privateKey = fs.readFileSync(
+    //     path.join(__dirname, '../../certs/private.pem'),
+    //   );
+    // } catch (error) {
+    //   const err = createHttpError(500, 'Error while reading private key');
+    //   throw err;
+    // }
+    let privateKey =
+      "const err = createHttpError(500, 'Error while reading private key');";
     const accessToken = sign(payload, privateKey, {
-      algorithm: 'RS256',
+      algorithm: 'HS256',
       expiresIn: '1h',
       issuer: 'Auth Service',
     });
