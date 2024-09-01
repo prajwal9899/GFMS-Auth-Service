@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.get('/', async (req, res, next) => {
-  res.json({});
+  res.json({ Status: 'Server Running' });
 });
 
 app.use('/auth', authRouter);

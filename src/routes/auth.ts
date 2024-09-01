@@ -37,7 +37,9 @@ router.post(
     authController.login(req, res, next),
 );
 
-router.get('/self', authenticate, (req: Request, res: Response) =>
+router.get('/self', 
+  // authenticate, 
+  (req: Request, res: Response) =>
   authController.self(req as AuthRequest, res),
 );
 
@@ -50,7 +52,7 @@ router.post(
 
 router.post(
   '/logout',
-  authenticate,
+  // authenticate,
   parseRefreshToken,
   (req: Request, res: Response, next: NextFunction) =>
     authController.logout(req as AuthRequest, res, next),
