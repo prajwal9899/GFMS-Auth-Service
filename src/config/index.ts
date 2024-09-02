@@ -4,7 +4,7 @@ config({
   path: path.join(__dirname, `../../.env.${process.env.NODE_ENV || 'dev'}`),
 });
 
-const { PORT, NODE_ENV, REFRESH_TOKEN_SECRET, JWKS_URI, MONGO_URL } =
+const { PORT, NODE_ENV, REFRESH_TOKEN_SECRET, JWKS_URI, MONGO_URL,DOMAIN } =
   process.env;
 
 export const Config = {
@@ -13,4 +13,5 @@ export const Config = {
   REFRESH_TOKEN_SECRET,
   JWKS_URI,
   MONGO_URL,
+  DOMAIN
 };

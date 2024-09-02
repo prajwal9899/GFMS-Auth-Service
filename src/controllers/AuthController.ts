@@ -9,6 +9,7 @@ import { CredentialService } from '../services/CredentialService';
 import { AuthRequest } from '../types';
 import { Roles } from '../constants';
 import refreshTokenModel from '../models/refreshTokenModel';
+import { Config } from '../config';
 
 export class AuthController {
   constructor(
@@ -21,6 +22,8 @@ export class AuthController {
   }
 
   async register(req: Request, res: Response, next: NextFunction) {
+    let DOMAIN = Config.DOMAIN;
+
     const { firstName, lastName, email, password } = req.body;
 
     const result = validationResult(req);
@@ -61,14 +64,14 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60,
         httpOnly: true,
       });
 
       res.cookie('refreshToken', refreshToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365,
         httpOnly: true,
@@ -82,6 +85,8 @@ export class AuthController {
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
+    let DOMAIN = Config.DOMAIN;
+
     const { email, password } = req.body;
 
     const result = validationResult(req);
@@ -134,14 +139,14 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
       });
 
       res.cookie('refreshToken', refreshToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365,
         httpOnly: true,
@@ -165,6 +170,7 @@ export class AuthController {
 
   async refresh(req: AuthRequest, res: Response, next: NextFunction) {
     try {
+      const DOMAIN = Config.DOMAIN;
       const payload: JwtPayload = {
         sub: req.auth.sub,
         role: req.auth.role,
@@ -173,7 +179,7 @@ export class AuthController {
 
       const accessToken = this.tokenService.generateAccessToken(payload);
 
-      const user = await this.userService.findById(req.auth.sub)
+      const user = await this.userService.findById(req.auth.sub);
       if (!user) {
         const error = createHttpError(
           400,
@@ -195,14 +201,14 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60, // 1h
         httpOnly: true, // Very important
       });
 
       res.cookie('refreshToken', refreshToken, {
-        domain: 'localhost',
+        domain: DOMAIN,
         sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365, // 1y
         httpOnly: true, // Very important
