@@ -64,15 +64,15 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60,
         httpOnly: true,
       });
 
       res.cookie('refreshToken', refreshToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365,
         httpOnly: true,
       });
@@ -139,15 +139,15 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
       });
 
       res.cookie('refreshToken', refreshToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365,
         httpOnly: true,
       });
@@ -201,15 +201,15 @@ export class AuthController {
       });
 
       res.cookie('accessToken', accessToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60, // 1h
         httpOnly: true, // Very important
       });
 
       res.cookie('refreshToken', refreshToken, {
-        // domain: "https://gfms-admin-dashboard.vercel.app",
-        // sameSite: 'strict',
+        domain: 'https://gfms-admin-dashboard.vercel.app',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 24 * 365, // 1y
         httpOnly: true, // Very important
       });
